@@ -11,13 +11,6 @@ from _map import *
 from _histogram import *
 from _controllers import *
 
-import os
-
-mapbox_token = os.getenv('MAPBOX_TOKEN')
-if not mapbox_token:
-    raise ValueError("MAPBOX_TOKEN environment variable not set")
-
-
 
 # ================= Data Ingestion =================
 df_data = pd.read_csv('dataset/cleaned_data.csv', index_col=0)
@@ -70,9 +63,7 @@ def update_hist(location, square_size, color_map):
         )
         hist_fig.layout = hist_layout
         
-        # px.set_mapbox_access_token(open('keys/mapbox_key').read())
-        
-        px.set_mapbox_access_token(mapbox_token)
+        px.set_mapbox_access_token(open('keys/mapbox_key').read())
         
         colors_rgb = px.colors.sequential.GnBu
         df_quantiles = df_data[color_map].quantile(np.linspace(0, 1, len(colors_rgb))).to_frame()
