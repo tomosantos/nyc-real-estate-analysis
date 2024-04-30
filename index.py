@@ -65,8 +65,8 @@ def update_hist(location, square_size, color_map):
         )
         hist_fig.layout = hist_layout
         
-        px.set_mapbox_access_token(open('keys/mapbox_key').read())
-        # px.set_mapbox_access_token(os.getenv('MAPBOX_TOKEN'))
+        # px.set_mapbox_access_token(open('keys/mapbox_key').read())
+        px.set_mapbox_access_token(os.getenv('MAPBOX_TOKEN'))
         
         colors_rgb = px.colors.sequential.GnBu
         df_quantiles = df_data[color_map].quantile(np.linspace(0, 1, len(colors_rgb))).to_frame()
