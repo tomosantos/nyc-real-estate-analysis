@@ -89,4 +89,4 @@ def update_hist(location, square_size, color_map):
 
 
 if __name__ == '__main__':
-        app.run_server(debug=False)
+        app.run_server(host="0.0.0.0", port=8050)
